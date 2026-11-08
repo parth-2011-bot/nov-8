@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#78cff0">
+  <meta name="description" content="A Kasukabe birthday mission made especially for you.">
+  <title>Crayon Shin-chan: The Birthday Mission</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="site-shell" id="site-shell">
+    <header class="topbar">
+      <a class="brand" href="#" data-screen="welcome" aria-label="Back to Kasukabe home">
+        <span class="brand-mark">K!</span><span>KASUKABE DISPATCH</span>
+      </a>
+      <div class="topbar-right">
+        <span class="date-chip" id="ist-date">KASUKABE STANDARD TIME</span>
+        <button class="sound-toggle" id="sound-toggle" type="button" aria-pressed="false" title="Optional ambience is off by default">♪ SOUND: OFF</button>
+      </div>
+    </header>
+
+    <main>
+      <!-- SCREEN 1 -->
+      <section class="screen active" id="screen-welcome" aria-labelledby="welcome-heading">
+        <div class="scene neighbourhood-scene">
+          <div class="sun"></div>
+          <div class="cloud cloud-one"></div><div class="cloud cloud-two"></div><div class="cloud cloud-three"></div>
+          <div class="distant-hills"></div>
+          <div class="house house-left"><span class="window"></span><span class="door"></span></div>
+          <div class="house house-right"><span class="window"></span><span class="door"></span></div>
+          <img class="optional-house-asset" id="nohara-house" src="assets/images/nohara_house.png" alt="" aria-hidden="true">
+          <div class="tree tree-left"><i></i></div><div class="tree tree-right"><i></i></div>
+          <div class="road"><span class="road-line"></span></div>
+          <div class="grass"></div>
+          <div class="scene-label">KASUKABE • A VERY NORMAL DAY</div>
+
+          <div class="welcome-copy comic-panel">
+            <p class="eyebrow">EPISODE 08 · THE BIRTHDAY MISSION</p>
+            <h1 id="welcome-heading">WELCOME TO<br><span>KASUKABE!</span></h1>
+            <p class="intro-subtitle" id="intro-subtitle">A completely normal day in a completely normal neighbourhood.</p>
+            <div class="speech-bubble" id="intro-bubble">HEY HEY HEYYYY!! WHO LET YOU IN HERE?!</div>
+            <p class="tiny-reaction" id="shiro-line">Shiro: ...woof.</p>
+            <button class="primary-button" id="start-button" type="button">START THE MISSION!! <span>→</span></button>
+          </div>
+
+          <div class="character-stage shinchan-stage">
+            <div class="character-wrap">
+              <img class="character-img" id="shinchan-welcome" src="assets/images/shinchan_idle.png" data-fallback="assets/images/shinchan.png" data-happy="assets/images/shinchan_happy.png" alt="Shin-chan character asset">
+              <div class="character-placeholder" id="shinchan-placeholder"><strong>SHIN-CHAN GOES HERE!</strong><small>Add shinchan.png to assets/images</small></div>
+            </div>
+            <button class="character-hitbox" id="shinchan-click" type="button" aria-label="Talk to Shin-chan"></button>
+            <div class="character-caption">TAP SHIN-CHAN</div>
+          </div>
+
+          <div class="shiro-stage">
+            <div class="shiro-wrap">
+              <img class="shiro-img" id="shiro-welcome" src="assets/images/shiro.png" data-happy="assets/images/shiro_happy.png" alt="Shiro character asset">
+              <div class="shiro-placeholder" id="shiro-placeholder"><span class="shiro-dog" aria-hidden="true"></span><small>SHIRO</small></div>
+            </div>
+            <button class="shiro-hitbox" id="shiro-click" type="button" aria-label="Interact with Shiro"></button>
+            <div class="shiro-caption">SHIRO IS INVESTIGATING</div>
+          </div>
+          <div class="comic-pop" id="comic-pop" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <!-- SCREEN 2 -->
+      <section class="screen" id="screen-countdown" aria-labelledby="countdown-heading" hidden>
+        <div class="scene countdown-scene">
+          <div class="cloud cloud-one"></div><div class="cloud cloud-two"></div>
+          <div class="countdown-header">
+            <p class="eyebrow">KASUKABE DEFENCE FORCE PRESENTS</p>
+            <h2 id="countdown-heading">OPERATION: BIRTHDAY APPROACHING</h2>
+            <p id="countdown-subtitle">TIME LEFT UNTIL PALAK'S BIRTHDAY</p>
+          </div>
+          <div class="countdown-layout" id="countdown-layout">
+            <div class="calendar-card">
+              <div class="calendar-top"><span>IMPORTANT DATE</span><span class="calendar-pin"></span></div>
+              <div class="calendar-month">NOVEMBER</div>
+              <div class="calendar-date">20</div>
+              <div class="calendar-footer">DO NOT FORGET. (SERIOUSLY.)</div>
+              <button class="calendar-tap" id="calendar-click" type="button" aria-label="Tap the calendar">TAP FOR A STATUS REPORT</button>
+            </div>
+            <div class="countdown-side">
+              <div class="speech-bubble countdown-bubble" id="countdown-bubble">THE COUNTDOWN IS UNDER CONTROL. PROBABLY.</div>
+              <div class="timer" id="timer" aria-label="Countdown to Palak's birthday">
+                <div class="time-unit"><strong id="days">000</strong><span>DAYS</span></div>
+                <div class="time-unit"><strong id="hours">00</strong><span>HOURS</span></div>
+                <div class="time-unit"><strong id="minutes">00</strong><span>MINUTES</span></div>
+                <div class="time-unit"><strong id="seconds">00</strong><span>SECONDS</span></div>
+              </div>
+              <p class="timezone-note">Countdown is calculated using India Standard Time (IST).</p>
+            </div>
+          </div>
+          <div class="countdown-characters">
+            <div class="mini-character">
+              <img id="shinchan-countdown" src="assets/images/shinchan_idle.png" data-fallback="assets/images/shinchan.png" alt="Shin-chan">
+              <div class="character-placeholder mini-placeholder" id="shinchan-countdown-placeholder">ADD SHIN-CHAN ASSET</div>
+            </div>
+            <div class="mini-shiro">
+              <img id="shiro-countdown" src="assets/images/shiro.png" alt="Shiro">
+              <div class="shiro-placeholder mini-shiro-placeholder" id="shiro-countdown-placeholder"><span class="shiro-dog"></span></div>
+            </div>
+          </div>
+          <button class="suspicious-box" id="everyday-secret-trigger" type="button" aria-label="Open suspicious box"><span>?</span><small>SUSPICIOUS<br>BOX</small></button>
+          <div class="secret-panel" id="everyday-secret" role="dialog" aria-modal="true" aria-labelledby="everyday-secret-title" hidden>
+            <button class="close-secret" type="button" data-close="everyday-secret" aria-label="Close">×</button>
+            <p class="eyebrow">UNEXPECTED DISCOVERY</p><h3 id="everyday-secret-title">A SECRET?!</h3>
+            <p id="everyday-secret-message">[EDIT YOUR EVERYDAY SECRET HERE]</p>
+          </div>
+          <div class="birthday-banner" id="birthday-banner" hidden>
+            <div class="confetti-layer" aria-hidden="true"></div>
+            <p class="eyebrow">🚨 EMERGENCY ANNOUNCEMENT!!! 🚨</p>
+            <h2 id="birthday-heading">PALAK'S BIRTHDAY HAS OFFICIALLY ARRIVED!!</h2>
+            <p id="birthday-line-one">THE KASUKABE DEFENCE FORCE HAS DECLARED TODAY A VERY IMPORTANT DAY.</p>
+            <p id="birthday-line-two">ALL NORMAL ACTIVITIES ARE SUSPENDED UNTIL FURTHER NOTICE.</p>
+            <strong id="birthday-line-three">CELEBRATION STATUS: MAXIMUM CHAOS.</strong>
+            <button class="birthday-gift" id="birthday-secret-trigger" type="button">🎁 OPEN THE SECRET BIRTHDAY GIFT</button>
+          </div>
+          <div class="secret-panel birthday-secret-panel" id="birthday-secret" role="dialog" aria-modal="true" aria-labelledby="birthday-secret-title" hidden>
+            <button class="close-secret" type="button" data-close="birthday-secret" aria-label="Close">×</button>
+            <p class="eyebrow">CLASSIFIED BIRTHDAY SURPRISE</p><h3 id="birthday-secret-title">A SPECIAL DELIVERY!</h3>
+            <p id="birthday-secret-message">[EDIT YOUR BIRTHDAY-ONLY SECRET HERE]</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREEN 3 -->
+      <section class="screen" id="screen-mission" aria-labelledby="mission-heading" hidden>
+        <div class="scene mission-scene">
+          <div class="mission-sky"></div>
+          <div class="mission-header">
+            <p class="eyebrow">KASUKABE DEFENCE FORCE · ARCHIVE ROOM</p>
+            <h2 id="mission-heading">TOP-SECRET MISSION FILE</h2>
+            <p id="mission-subtitle">KASUKABE DEFENCE FORCE — SPECIAL ASSIGNMENT</p>
+          </div>
+          <div class="mission-layout">
+            <div class="mission-board">
+              <div class="board-tape"></div>
+              <div class="mission-stamp">TOP<br>SECRET</div>
+              <h3>MISSION BRIEFING</h3>
+              <div class="mission-detail"><span>MISSION SUBJECT:</span><strong id="mission-subject">PALAK</strong></div>
+              <div class="mission-detail"><span>MISSION STATUS:</span><strong id="mission-status">EXTREMELY IMPORTANT (APPARENTLY)</strong></div>
+              <div class="mission-detail"><span>MISSION OBJECTIVE:</span><strong id="mission-objective">UNCLASSIFIED</strong></div>
+              <div class="mission-detail"><span>AUTHORISATION:</span><strong id="mission-authorisation">CLASSIFIED FOR NO REASON</strong></div>
+              <div class="scribble">✎ CONFIDENTIAL-ish</div>
+              <button class="primary-button file-button" id="open-file-button" type="button">OPEN THE MISSION FILE <span>→</span></button>
+            </div>
+            <div class="mission-character-area">
+              <div class="speech-bubble mission-bubble" id="mission-bubble">THIS FILE IS VERY IMPORTANT. I CAN TELL BECAUSE IT HAS A STAMP.</div>
+              <img id="shinchan-mission" class="mission-shinchan" src="assets/images/shinchan_surprised.png" data-fallback="assets/images/shinchan.png" alt="Shin-chan">
+              <div class="character-placeholder mission-placeholder" id="shinchan-mission-placeholder">ADD SHIN-CHAN ASSET</div>
+              <div class="shiro-mini-wrap">
+                <img id="shiro-mission" src="assets/images/shiro.png" alt="Shiro">
+                <div class="shiro-placeholder" id="shiro-mission-placeholder"><span class="shiro-dog"></span></div>
+              </div>
+            </div>
+          </div>
+          <div class="personal-note" id="personal-note" hidden>
+            <div class="note-pin"></div>
+            <p class="eyebrow">DOCUMENT 001 · PERSONAL MESSAGE</p>
+            <h3>AN IMPORTANT NOTE FOR PALAK</h3>
+            <p id="personal-message">[WRITE YOUR PERSONAL MESSAGE TO PALAK HERE]</p>
+            <div class="note-signoff">END OF TRANSMISSION. GO PLAY.</div>
+            <button class="secondary-button" id="close-file-button" type="button">CLOSE THE FILE</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <nav class="scene-nav" aria-label="Scene navigation">
+      <button type="button" class="nav-button active" data-screen="welcome"><span>01</span> KASUKABE</button>
+      <button type="button" class="nav-button" data-screen="countdown"><span>02</span> COUNTDOWN</button>
+      <button type="button" class="nav-button" data-screen="mission"><span>03</span> MISSION FILE</button>
+    </nav>
+    <footer class="footer-note">AN UNOFFICIAL FAN-MADE BIRTHDAY PROJECT · MADE WITH MAXIMUM KASUKABE CHAOS</footer>
+  </div>
+
+  <audio id="ambience-audio" src="assets/audio/ambience.mp3" loop preload="none"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
